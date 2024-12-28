@@ -6,7 +6,7 @@ import { useChats } from "@/hooks/useChats";
 import { Navbar } from "@/components/Navbar/";
 import { Notification } from "@/components/Notification";
 
-function Home() {
+export default function Home() {
   const {
     chats,
     currentChat,
@@ -72,5 +72,3 @@ function Home() {
     </div>
   );
 }
-
-export default Home;

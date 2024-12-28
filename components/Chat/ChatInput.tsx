@@ -102,7 +102,7 @@ export function ChatInput({ onSendAction, isLoading = false }: ChatInputProps) {
               style={{ maxHeight: "200px", overflowY: "auto" }}
             />
             <div
-              className="flex items-center justify-between w-fullbg-white dark:bg-gray-700 px-4 py-2 text-md relative rounded-b-lg border-b border-gray-200 dark:border-gray-600 border-t-0 border-l border-r dark:border-none"
+              className="flex items-center justify-between w-full bg-white dark:bg-gray-700 px-4 py-2 text-md relative rounded-b-lg border-b border-gray-200 dark:border-gray-600 border-t-0 border-l border-r dark:border-none"
               style={{ marginTop: "-7px" }}
             >
               <div className="flex items-center">

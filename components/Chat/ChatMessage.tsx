@@ -102,7 +102,7 @@ export function ChatMessage({ isUser, content }: ChatMessageProps) {
 
   return (
     <div
-      className={`py-4 md:py-8 ${
+      className={`py-4 md:py-8 relative ${
         isUser ? "bg-white dark:bg-gray-800" : "bg-gray-50 dark:bg-gray-700"
       } transition-colors duration-200`}
     >
@@ -122,7 +122,7 @@ export function ChatMessage({ isUser, content }: ChatMessageProps) {
                 const match = /language-(\w+)/.exec(className || "");
                 const code = String(children).replace(/\n$/, "");
                 return match ? (
-                  <div className="relative max-w-[270px] md:max-w-none">
+                  <div className="relative max-w-[271px] md:max-w-none">
                     <button
                       className="top-1 right-1 rounded-md absolute bg-slate-900 rounded-b-md p-1"
                       onClick={() => handleCopyToClipBoard(code)}
@@ -140,7 +140,7 @@ export function ChatMessage({ isUser, content }: ChatMessageProps) {
                       wrapLongLines
                       showLineNumbers
                       showInlineLineNumbers
-                      className="max-h-[360px] md:max-h-none md:max-w-2xl rounded-md shadow-md"
+                      className="max-w-[295px] max-h-[360px] md:max-h-none md:max-w-2xl rounded-md shadow-md"
                     >
                       {code}
                     </SyntaxHighlighter>

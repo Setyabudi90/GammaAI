@@ -45,9 +45,13 @@ export function useChats() {
       );
       return;
     }
+
     try {
       setIsLoading(true);
-      const response = await generateResponse("Start a new conversation");
+
+      const response: string = await generateResponse(
+        "Start a new conversation"
+      );
 
       const newChat: Chat = {
         id: Date.now().toString(),
