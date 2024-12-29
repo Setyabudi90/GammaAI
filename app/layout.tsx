@@ -52,7 +52,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html
+      data-build={process.env.NEXT_PUBLIC_SECRET_SELF_KEY}
+      lang="en"
+      dir="ltr"
+    >
       <body className="antialiased">{children}</body>
     </html>
   );

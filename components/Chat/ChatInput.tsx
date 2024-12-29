@@ -1,7 +1,6 @@
 "use client";
 import React, { useState } from "react";
 import { RotateCcw, SendHorizontal, Mic, MicOff } from "lucide-react";
-import { resetHistory } from "../../services/groq";
 import { toast } from "react-toastify";
 
 declare global {
@@ -72,6 +71,18 @@ export function ChatInput({ onSendAction, isLoading = false }: ChatInputProps) {
     recognition.onend = () => {
       setIsRecording(false);
     };
+  };
+
+  const resetHistory = async () => {
+    try {
+      const response = await fetch("/api/gamma", {
+        method: "DELETE",
+      });
+      const result = await response.json();
+      toast.success<string>(result.message);
+    } catch (error) {
+      console.error("Error reset history:", error);
+    }
   };
 
   const stopSpeechToText = () => {

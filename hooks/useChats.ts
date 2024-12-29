@@ -67,6 +67,7 @@ export function useChats() {
 
       setChats((prev) => [...prev, newChat]);
       setCurrentChatId(newChat.id);
+      document.title = `${newChat.id} - GammaChat`;
     } catch (error) {
       console.error("Error creating new chat:", error);
     } finally {
@@ -76,6 +77,7 @@ export function useChats() {
 
   const selectChat = (id: string) => {
     setCurrentChatId(id);
+    document.title = `${id} - GammaChat`;
   };
 
   const sendMessage = async (content: string) => {
