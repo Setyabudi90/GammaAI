@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { GoogleTagManager } from "@next/third-parties/google";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -57,6 +58,7 @@ export default function RootLayout({
       lang="en"
       dir="ltr"
     >
+      <GoogleTagManager gtmId="GTM-N2BPXMRN" />
       <body className="antialiased">{children}</body>
     </html>
   );
