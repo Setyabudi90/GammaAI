@@ -27,7 +27,7 @@ Gamma AI adalah aplikasi berbasis web modern yang menggunakan teknologi AI untuk
 
 ### Prasyarat
 - **Node.js**: Versi 16 atau lebih baru.
-- **npm** atau **yarn**: Untuk mengelola dependensi.
+- **npm** atau **pnpm**: Untuk mengelola dependensi.
 
 ### Langkah-langkah Instalasi
 
