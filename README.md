@@ -43,6 +43,7 @@ Gamma AI adalah aplikasi berbasis web modern yang menggunakan teknologi AI untuk
    npm install
 
 3. Buat file .env.local untuk konfigurasi environment
+   
 4. Jalankan aplikasi dalam mode pengembangan:
    ```bash
    pnpm dev
@@ -54,4 +55,4 @@ Gamma AI adalah aplikasi berbasis web modern yang menggunakan teknologi AI untuk
    http://localhost:3000
 
 ### LICENSE
-Gamma AI dilisensikan dibawah **MIT LICENSE**
+Gamma AI dilisensikan dibawah **[MIT LICENSE](https://choosealicense.com/)**
