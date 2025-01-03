@@ -35,3 +35,23 @@ Gamma AI adalah aplikasi berbasis web modern yang menggunakan teknologi AI untuk
    ```bash
    git clone https://github.com/username/gamma-ai.git
    cd gamma-ai
+
+2. Install Dependensi:
+   ```bash
+   pnpm install
+   # or
+   npm install
+
+3. Buat file .env.local untuk konfigurasi environment
+4. Jalankan aplikasi dalam mode pengembangan:
+   ```bash
+   pnpm dev
+   # or
+   npm run dev
+
+5. Buka browser dan ketik:
+   ```bash
+   http://localhost:3000
+
+### LICENSE
+Gamma AI dilisensikan dibawah **MIT LICENSE**
