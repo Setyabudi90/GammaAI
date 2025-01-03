@@ -33,7 +33,7 @@ Gamma AI adalah aplikasi berbasis web modern yang menggunakan teknologi AI untuk
 
 1. Clone repository:
    ```bash
-   git clone https://github.com/username/gamma-ai.git
+   git clone https://github.com/Setyabudi90/GammaAI.git
    cd gamma-ai
 
 2. Install Dependensi:
