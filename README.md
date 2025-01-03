@@ -1,36 +1,37 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Gamma AI
 
-## Getting Started
+Gamma AI adalah aplikasi berbasis web modern yang menggunakan teknologi AI untuk memberikan pengalaman pengguna yang intuitif dan inovatif. Aplikasi ini dibangun dengan **Next.js** (TypeScript) dan **Tailwind CSS** untuk memastikan performa tinggi dan desain yang responsif.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Fitur Utama
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- **Antarmuka Interaktif**: Menggunakan Tailwind CSS untuk tampilan yang bersih dan responsif.
+- **AI Cerdas**: Memanfaatkan API AI untuk memproses dan memberikan solusi yang relevan kepada pengguna.
+- **Performa Tinggi**: Dibangun dengan Next.js untuk rendering sisi server (SSR) dan kecepatan pemuatan yang optimal.
+- **Desain Modular**: Arsitektur berbasis komponen yang mempermudah pengembangan dan perawatan.
+- **API Custom**: Backend API yang dapat diskalakan untuk integrasi data.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Teknologi yang Digunakan
 
-## Learn More
+- **[Next.js (TypeScript)](https://nextjs.org/)**: Framework React untuk pengembangan web modern.
+- **[Tailwind CSS](https://tailwindcss.com/)**: Framework CSS untuk styling cepat dan fleksibel.
+- **API AI**: Mengintegrasikan layanan AI untuk fitur interaktif dan otomatisasi.
+- **Next.js API Routes**: Untuk pengelolaan endpoint API secara terpusat.
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Instalasi dan Pengaturan
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Prasyarat
+- **Node.js**: Versi 16 atau lebih baru.
+- **npm** atau **yarn**: Untuk mengelola dependensi.
 
-## Deploy on Vercel
+### Langkah-langkah Instalasi
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. Clone repository:
+   ```bash
+   git clone https://github.com/username/gamma-ai.git
+   cd gamma-ai
