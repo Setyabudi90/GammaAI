@@ -21,6 +21,7 @@ export function useTheme() {
     if (typeof window !== "undefined") {
       const root = window.document.documentElement;
       root.classList.remove("light", "dark");
+      root.setAttribute("data-theme", theme);
       root.classList.add(theme);
       localStorage.setItem("theme", theme);
     }
