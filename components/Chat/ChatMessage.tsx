@@ -9,13 +9,19 @@ import { franc } from "franc";
 interface ChatMessageProps {
   isUser: boolean;
   content: string;
+  completionsId: string;
 }
 
-export function ChatMessage({ isUser, content }: ChatMessageProps) {
+export function ChatMessage({
+  isUser,
+  content,
+  completionsId,
+}: ChatMessageProps) {
   const autoScroll: MutableRefObject<HTMLDivElement | null> = useRef(null);
   const [copied, setIsCopied] = useState<boolean>(false);
   const [isReading, setIsReading] = useState<boolean>(false);
   const [lang, setLang] = useState<string>("en");
+  const [embedId, setEmbedId] = useState<string | null>(null);
 
   useEffect(() => {
     autoScroll.current?.scrollIntoView({
@@ -64,8 +70,19 @@ export function ChatMessage({ isUser, content }: ChatMessageProps) {
     setLang(detectedISO639);
   };
 
+  const youtubeEmbed = (content: string) => {
+    const youtubeRegex =
+      /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:watch\?v=|embed\/|v\/|shorts\/)|youtu\.be\/)([\w-]{11})/;
+    const match = content.match(youtubeRegex);
+    if (match) {
+      const videoId = match[1];
+      setEmbedId(videoId);
+    }
+  };
+
   useEffect(() => {
     detectLang(content);
+    youtubeEmbed(content);
   }, [content]);
 
   const handleReadLoud = (text: string) => {
@@ -109,6 +126,7 @@ export function ChatMessage({ isUser, content }: ChatMessageProps) {
       <div
         className="max-w-full px-4 mx-auto flex gap-4 md:gap-6"
         data-lang={lang}
+        gen-id={completionsId}
       >
         {isUser ? (
           <UserCircle2 className="w-6 h-6 flex-shrink-0 text-gray-600 dark:text-gray-300" />
@@ -155,6 +173,16 @@ export function ChatMessage({ isUser, content }: ChatMessageProps) {
           >
             {content}
           </ReactMarkdown>
+
+          {embedId && !isUser && (
+            <iframe
+              className="w-full aspect-video rounded-md shadow-md mb-3"
+              src={`https://www.youtube.com/embed/${embedId}`}
+              title="YouTube video"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            ></iframe>
+          )}
 
           {!isUser && (
             <div className="flex flex-shrink-0 gap-2">
