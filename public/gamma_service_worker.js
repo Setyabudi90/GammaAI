@@ -6,7 +6,6 @@ const STATIC_ASSETS = [
   "/favicon-32x32.png",
   "/site.webmanifest",
   "/android-chrome-192x192.png",
-  "/_next/static/chunks/",
 ];
 
 self.addEventListener("install", (event) => {
@@ -31,9 +30,12 @@ self.addEventListener("activate", (event) => {
           }
         })
       );
+    }).then(() => {
+      console.log("[Service Worker] Successfully activated!");
     })
   );
 });
+
 
 self.addEventListener("fetch", (event) => {
   const { request } = event;
