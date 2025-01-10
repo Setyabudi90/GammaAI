@@ -1,7 +1,7 @@
 # Gamma AI
 
 Gamma AI adalah aplikasi berbasis web modern yang menggunakan teknologi AI untuk memberikan pengalaman pengguna yang intuitif dan inovatif. Aplikasi ini dibangun dengan **Next.js** (TypeScript) dan **Tailwind CSS** untuk memastikan performa tinggi dan desain yang responsif.
-
+![preview](https://gammac.vercel.app/android-chrome-512x512.png)
 ---
 
 ## Fitur Utama
