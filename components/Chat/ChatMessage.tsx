@@ -11,13 +11,11 @@ import { atomOneLight } from "react-syntax-highlighter/dist/esm/styles/hljs";
 interface ChatMessageProps {
   isUser: boolean;
   content: string;
-  completionsId: string;
 }
 
 export function ChatMessage({
   isUser,
   content,
-  completionsId,
 }: ChatMessageProps) {
   const autoScroll: MutableRefObject<HTMLDivElement | null> = useRef(null);
   const [copied, setIsCopied] = useState<boolean>(false);
@@ -130,7 +128,6 @@ export function ChatMessage({
         <div
           className="max-w-full px-4 mx-auto flex gap-4 md:gap-6"
           data-lang={lang}
-          gen-id={completionsId}
         >
           {isUser ? (
             <UserCircle2 className="w-6 h-6 flex-shrink-0 text-gray-600 dark:text-gray-300" />
