@@ -20,7 +20,7 @@ export default function Home() {
     currentChat?.messages && currentChat?.messages?.length > 0;
 
   return (
-    <div className="flex h-screen bg-white dark:bg-gray-800 transition-colors duration-200">
+    <div className="flex h-screen bg-white dark:bg-[#212121] transition-colors duration-200">
       <Sidebar
         chats={chats}
         onNewChatAction={createNewChat}
@@ -29,7 +29,7 @@ export default function Home() {
       />
       <main className="flex-1 overflow-auto relative">
         <Navbar />
-        <div className="pb-32 pt-20">
+        <div className="pb-32 pt-14">
           {!currentChat ? (
             <div className="flex flex-col items-center justify-center text-slate-700 dark:text-slate-200 h-[90vh] mx-2">
               <h1 className="text-3xl font-extrabold mb-2">
