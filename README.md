@@ -2,15 +2,15 @@
 
 Gamma AI adalah aplikasi berbasis web modern yang menggunakan teknologi AI untuk memberikan pengalaman pengguna yang intuitif dan inovatif. Aplikasi ini dibangun dengan **Next.js** (TypeScript) dan **Tailwind CSS** untuk memastikan performa tinggi dan desain yang responsif.
 
-![preview](https://gammac.vercel.app/android-chrome-512x512.png)
----
+![Gamma AI Logo](https://gammac.vercel.app/android-chrome-512x512.png)
+
 
 ## Fitur Utama
 
 - **Antarmuka Interaktif**: Menggunakan Tailwind CSS untuk tampilan yang bersih dan responsif.
 - **AI Cerdas**: Memanfaatkan API AI untuk memproses dan memberikan solusi yang relevan kepada pengguna.
 - **Performa Tinggi**: Dibangun dengan Next.js untuk rendering sisi server (SSR) dan kecepatan pemuatan yang optimal.
-- **Desain Modular**: Arsitektur berbasis komponen yang mempermudah pengembangan dan perawatan.
+- **Desain Mudah**: Arsitektur berbasis komponen yang mempermudah pengembangan dan perawatan.
 - **API Custom**: Backend API yang dapat diskalakan untuk integrasi data.
 
 ---
@@ -27,7 +27,7 @@ Gamma AI adalah aplikasi berbasis web modern yang menggunakan teknologi AI untuk
 ## Instalasi dan Pengaturan
 
 ### Prasyarat
-- **Node.js**: Versi 16 atau lebih baru.
+- **Node.js**: Versi 18 atau lebih baru.
 - **npm** atau **pnpm**: Untuk mengelola dependensi.
 
 ### Langkah-langkah Instalasi
@@ -43,15 +43,18 @@ Gamma AI adalah aplikasi berbasis web modern yang menggunakan teknologi AI untuk
    # or
    npm install
 
-3. Buat file .env.local untuk konfigurasi environment
+3. Buat file .env.local lalu isi sebagai berikut:
+   ```env
+   GROQ_API_KEY=YOUR_KEY
+   NEXT_PUBLIC_SECRET_KEY=YOUR_SECRET
    
-4. Jalankan aplikasi dalam mode pengembangan:
+5. Jalankan aplikasi dalam mode pengembangan:
    ```bash
    pnpm dev
    # or
    npm run dev
 
-5. Buka browser dan ketik:
+6. Buka browser dan ketik:
    ```bash
    http://localhost:3000
 
