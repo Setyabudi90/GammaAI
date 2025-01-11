@@ -122,7 +122,7 @@ export function ChatMessage({
     <>
       <div
         className={`py-4 md:py-8 relative ${
-          isUser ? "bg-[#eee] dark:bg-[#2f2f2f]" : "bg-transparent"
+          isUser ? "bg-[#eee] dark:bg-[#252525]" : "bg-transparent"
         } transition-colors duration-200`}
       >
         <div
