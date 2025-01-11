@@ -95,9 +95,12 @@ export function ChatInput({ onSendAction, isLoading = false }: ChatInputProps) {
   return (
     <>
       <div className="mt-8"></div>
-      <div className="fixed bottom-0 left-0 md:-right-32 bg-gradient-to-t from-white via-white dark:from-gray-800 dark:via-gray-800 transition-colors duration-200">
+      <div className="fixed bottom-0 left-0 md:-right-32 bg-gradient-to-t from-white via-white dark:from-[#000000] dark:via-[#212121] transition-colors duration-200">
         <div className="max-w-3xl mx-auto p-4 md:p-6">
-          <form onSubmit={handleSubmit} className="relative">
+          <form
+            onSubmit={handleSubmit}
+            className="relative shadow dark:shadow-none"
+          >
             <textarea
               rows={1}
               value={message}
@@ -109,16 +112,16 @@ export function ChatInput({ onSendAction, isLoading = false }: ChatInputProps) {
                 isLoading ? "Waiting for response..." : "Send a message..."
               }
               disabled={isLoading}
-              className="w-full resize-none rounded-t-lg bg-white dark:bg-gray-700 px-4 py-3 md:pr-12 text-md text-gray-800 dark:text-gray-200 transition-colors duration-200  focus:ring-0 dark:border-none border-b-0 border-t border-l border-r border-gray-200 dark:border-gray-600"
+              className="w-full resize-none rounded-t-lg bg-white dark:bg-[#171717] px-4 py-3 md:pr-12 text-md text-gray-800 dark:text-gray-200 transition-colors duration-200  focus:ring-0 dark:border-none border-b-0 border-t border-l border-r border-gray-200 dark:border-gray-600"
               style={{ maxHeight: "200px", overflowY: "auto" }}
             />
             <div
-              className="flex items-center justify-between w-full bg-white dark:bg-gray-700 px-4 py-2 text-md relative rounded-b-lg border-b border-gray-200 dark:border-gray-600 border-t-0 border-l border-r dark:border-none"
+              className="flex items-center justify-between w-full bg-white dark:bg-[#171717] px-4 py-2 text-md relative rounded-b-lg border-b border-gray-200 dark:border-gray-600 border-t-0 border-l border-r dark:border-none"
               style={{ marginTop: "-7px" }}
             >
               <div className="flex items-center">
                 <button
-                  className="p-1 rounded-lg"
+                  className="p-1 rounded-lg selection:text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-600 hover:text-gray-700 dark:hover:text-gray-200 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
                   aria-label="Reset History"
                   title="Reset History"
                   name="Reset"
@@ -132,6 +135,8 @@ export function ChatInput({ onSendAction, isLoading = false }: ChatInputProps) {
                   type="button"
                   disabled={isLoading}
                   name="Record"
+                  aria-label="Record"
+                  title="Record"
                   className="p-1 rounded-lg selection:text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-600 hover:text-gray-700 dark:hover:text-gray-200 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
                   onClick={isRecording ? stopSpeechToText : startSpeechToText}
                 >
@@ -147,6 +152,8 @@ export function ChatInput({ onSendAction, isLoading = false }: ChatInputProps) {
                 type="submit"
                 disabled={isLoading}
                 name="Sender"
+                aria-label="Send"
+                title="Send a message"
                 className="p-1 rounded-lg text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-600 hover:text-gray-700 dark:hover:text-gray-200 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 <SendHorizontal className="w-5 h-5" />
