@@ -8,7 +8,7 @@ export default function ServiceWorkerRegistration() {
       navigator.serviceWorker
         .register("/gamma_service_worker.js")
         .then((registration) => {
-          console.log("Service Worker successfully registered:", registration);
+          console.log("Service Worker successfully registered");
         })
         .catch((error) => {
           console.error("Service Worker registration failed:", error);
