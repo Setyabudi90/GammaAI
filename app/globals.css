@@ -14,6 +14,10 @@ html {
   @apply scroll-smooth;
 }
 
+::-webkit-scrollbar {
+  display: none;
+}
+
 body {
   margin: 0;
   overflow: hidden;
@@ -42,7 +46,9 @@ textarea::-webkit-scrollbar-thumb {
 }
 
 .prose pre {
-  @apply bg-gray-50 dark:bg-gray-700;
+  @apply bg-gray-50 dark:bg-transparent;
   border-radius: 0.5rem;
   overflow-x: auto;
 }
+
+
