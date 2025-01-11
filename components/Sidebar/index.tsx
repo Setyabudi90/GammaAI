@@ -31,9 +31,9 @@ export function Sidebar({
         onClick={() => setIsOpen(!isOpen)}
         className={`md:hidden fixed transition-all duration-300 text-gray-800 dark:text-gray-200 ${
           isOpen
-            ? "left-64 dark:bg-gray-900 bg-gray-200 translate-x-0 rounded-l-sm -top-1 z-40"
-            : "left-4 translate-x-0 top-4 z-50 p-2"
-        } hover:bg-gray-200 dark:hover:bg-gray-700 p-3 rounded-lg`}
+            ? "left-64 dark:bg-[#171717] bg-slate-300 translate-x-0 p-3 rounded-l-sm -top-1 z-40"
+            : "left-4 translate-x-0 top-4 z-50 py-1 px-3"
+        } hover:bg-gray-200 dark:hover:bg-[#2f2f2f] rounded-lg`}
       >
         {isOpen ? <X className="w-5 h-5" /> : <Text className="w-5 h-5" />}
       </button>
@@ -41,14 +41,14 @@ export function Sidebar({
       <div
         className={`fixed md:static inset-y-0 left-0 transform ${
           isOpen ? "translate-x-0" : "-translate-x-full"
-        } md:translate-x-0 transition-transform duration-200 ease-in-out w-64 bg-slate-300 dark:bg-gray-900 text-gray-800 dark:text-gray-300 p-2 flex flex-col z-40`}
+        } md:translate-x-0 transition-transform duration-200 ease-in-out w-64 bg-slate-300 dark:bg-[#171717] text-gray-800 dark:text-gray-300 p-2 flex flex-col z-40`}
       >
         <button
           onClick={() => {
             onNewChatAction();
             setIsOpen(false);
           }}
-          className="flex items-center gap-2 w-full p-3 rounded-lg border border-gray-700 hover:bg-gray-700 transition-colors duration-200 hover:text-gray-200"
+          className="flex items-center gap-2 w-full p-3 rounded-lg border border-gray-700 hover:bg-gray-700 dark:hover:bg-[#2f2f2f] transition-colors duration-200 hover:text-gray-200"
         >
           <Plus className="w-4 h-4" />
           New Chat
@@ -62,8 +62,8 @@ export function Sidebar({
                 onSelectChatAction(chat.id);
                 setIsOpen(false);
               }}
-              className={`flex items-center gap-2 w-full p-3 rounded-lg hover:bg-gray-700 transition-colors duration-200 text-left hover:text-gray-200 ${
-                chat.id === currentChatId && "bg-gray-200 dark:bg-gray-700"
+              className={`flex items-center gap-2 w-full p-3 rounded-lg hover:bg-[#2f2f2f] transition-colors duration-200 text-left hover:text-gray-200 ${
+                chat.id === currentChatId && "bg-gray-200 dark:bg-[#474646]"
               }`}
             >
               <MessageSquare className="w-4 h-4" />
