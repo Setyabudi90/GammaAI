@@ -5,21 +5,26 @@ import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { MutableRefObject, useEffect, useRef, useState } from "react";
 import { toast } from "react-toastify";
 import { franc } from "franc";
+import { atomDark } from "react-syntax-highlighter/dist/esm/styles/prism";
+import { atomOneLight } from "react-syntax-highlighter/dist/esm/styles/hljs";
 
 interface ChatMessageProps {
   isUser: boolean;
   content: string;
+  completionsId: string;
 }
 
 export function ChatMessage({
   isUser,
   content,
+  completionsId,
 }: ChatMessageProps) {
   const autoScroll: MutableRefObject<HTMLDivElement | null> = useRef(null);
   const [copied, setIsCopied] = useState<boolean>(false);
   const [isReading, setIsReading] = useState<boolean>(false);
   const [lang, setLang] = useState<string>("en");
   const [embedId, setEmbedId] = useState<string | null>(null);
+  const isDark = document.documentElement.classList.contains("dark");
 
   useEffect(() => {
     autoScroll.current?.scrollIntoView({
@@ -116,110 +121,114 @@ export function ChatMessage({
   };
 
   return (
-    <div
-      className={`py-4 md:py-8 relative ${
-        isUser ? "bg-white dark:bg-gray-800" : "bg-gray-50 dark:bg-gray-700"
-      } transition-colors duration-200`}
-    >
+    <>
       <div
-        className="max-w-full px-4 mx-auto flex gap-4 md:gap-6"
-        data-lang={lang}
+        className={`py-4 md:py-8 relative ${
+          isUser ? "bg-[#eee] dark:bg-[#2f2f2f]" : "bg-transparent"
+        } transition-colors duration-200`}
       >
-        {isUser ? (
-          <UserCircle2 className="w-6 h-6 flex-shrink-0 text-gray-600 dark:text-gray-300" />
-        ) : (
-          <Bot className="w-6 h-6 flex-shrink-0 text-green-600 dark:text-green-400" />
-        )}
-        <div className="prose prose-slate dark:prose-invert max-w-2xl">
-          <ReactMarkdown
-            components={{
-              code({ node, className, children, ...props }) {
-                const match = /language-(\w+)/.exec(className || "");
-                const code = String(children).replace(/\n$/, "");
-                return match ? (
-                  <div className="relative max-w-[271px] md:max-w-none">
-                    <button
-                      className="top-1 right-1 rounded-md absolute bg-slate-900 rounded-b-md p-1"
-                      onClick={() => handleCopyToClipBoard(code)}
-                    >
-                      {copied ? (
-                        <Check color="#eee" size={20} />
-                      ) : (
-                        <Copy color="#eee" size={20} />
-                      )}
-                    </button>
-
-                    <SyntaxHighlighter
-                      PreTag="div"
-                      language={match[1]}
-                      wrapLongLines
-                      showLineNumbers
-                      showInlineLineNumbers
-                      className="max-w-[295px] max-h-[360px] md:max-h-none md:max-w-2xl rounded-md shadow-md"
-                    >
-                      {code}
-                    </SyntaxHighlighter>
-                  </div>
-                ) : (
-                  <code {...props} className={className}>
-                    {children}
-                  </code>
-                );
-              },
-            }}
-          >
-            {content}
-          </ReactMarkdown>
-
-          {embedId && !isUser && (
-            <iframe
-              className="w-full aspect-video rounded-md shadow-md mb-3"
-              src={`https://www.youtube.com/embed/${embedId}`}
-              title="YouTube video"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            ></iframe>
+        <div
+          className="max-w-full px-4 mx-auto flex gap-4 md:gap-6"
+          data-lang={lang}
+          gen-id={completionsId}
+        >
+          {isUser ? (
+            <UserCircle2 className="w-6 h-6 flex-shrink-0 text-gray-600 dark:text-gray-300" />
+          ) : (
+            <Bot className="w-6 h-6 flex-shrink-0 text-green-600 dark:text-green-400" />
           )}
+          <div className="prose prose-slate dark:prose-invert max-w-2xl">
+            <ReactMarkdown
+              components={{
+                code({ node, className, children, ...props }) {
+                  const match = /language-(\w+)/.exec(className || "");
+                  const code = String(children).replace(/\n$/, "");
+                  return match ? (
+                    <div className="relative max-w-[271px] md:max-w-none">
+                      <button
+                        className="top-1 right-1 rounded-md absolute bg-slate-900 rounded-b-md p-1"
+                        onClick={() => handleCopyToClipBoard(code)}
+                      >
+                        {copied ? (
+                          <Check color="#eee" size={18} />
+                        ) : (
+                          <Copy color="#eee" size={18} />
+                        )}
+                      </button>
 
-          {!isUser && (
-            <div className="flex flex-shrink-0 gap-2">
-              <button
-                className="bg-transparent rounded-b-md p-1"
-                onClick={() => handleReadLoud(content)}
-              >
-                {isReading ? (
-                  <VolumeX
-                    size={20}
-                    className="shadow-md text-slate-800 dark:text-slate-200"
-                  />
-                ) : (
-                  <Volume2
-                    size={20}
-                    className="shadow-md text-slate-800 dark:text-slate-200"
-                  />
-                )}
-              </button>
-              <button
-                className="bg-transparent rounded-b-md p-1"
-                onClick={() => handleCopyToClipBoard(content)}
-              >
-                {copied ? (
-                  <Check
-                    size={18}
-                    className="shadow-md text-slate-800 dark:text-slate-200"
-                  />
-                ) : (
-                  <Copy
-                    size={18}
-                    className="shadow-md text-slate-800 dark:text-slate-200"
-                  />
-                )}
-              </button>
-            </div>
-          )}
+                      <SyntaxHighlighter
+                        PreTag="div"
+                        style={isDark ? atomDark : atomOneLight}
+                        language={match[1]}
+                        wrapLongLines
+                        showLineNumbers
+                        showInlineLineNumbers
+                        className="max-w-[295px] max-h-[360px] md:max-h-none md:max-w-2xl rounded-md shadow-md"
+                      >
+                        {code}
+                      </SyntaxHighlighter>
+                    </div>
+                  ) : (
+                    <code {...props} className={className}>
+                      {children}
+                    </code>
+                  );
+                },
+              }}
+            >
+              {content}
+            </ReactMarkdown>
+
+            {embedId && !isUser && (
+              <iframe
+                className="w-full aspect-video rounded-md shadow-md mb-3"
+                src={`https://www.youtube.com/embed/${embedId}`}
+                title="YouTube video"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              ></iframe>
+            )}
+
+            {!isUser && (
+              <div className="flex flex-shrink-0 gap-2">
+                <button
+                  className="bg-transparent rounded-b-md p-1"
+                  onClick={() => handleReadLoud(content)}
+                >
+                  {isReading ? (
+                    <VolumeX
+                      size={20}
+                      className="text-slate-800 dark:text-slate-200"
+                    />
+                  ) : (
+                    <Volume2
+                      size={20}
+                      className="text-slate-800 dark:text-slate-200"
+                    />
+                  )}
+                </button>
+                <button
+                  className="bg-transparent rounded-b-md p-1"
+                  onClick={() => handleCopyToClipBoard(content)}
+                >
+                  {copied ? (
+                    <Check
+                      size={18}
+                      className="text-slate-800 dark:text-slate-200"
+                    />
+                  ) : (
+                    <Copy
+                      size={18}
+                      className="text-slate-800 dark:text-slate-200"
+                    />
+                  )}
+                </button>
+              </div>
+            )}
+          </div>
         </div>
+        <div ref={autoScroll}></div>
       </div>
-      <div ref={autoScroll}></div>
-    </div>
+    </>
   );
 }
