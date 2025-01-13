@@ -144,7 +144,7 @@ export function ChatMessage({
                     <div className="relative max-w-[271px] md:max-w-none">
                       <div
                           className="flex absolute w-full justify-between items-center p-2 bg-[#2f2f2f] text-[#bfaca8] text-xs rounded-t-md capitalize"
-                          style={{ marginTop: "-10px" }}
+                          style={{ marginTop: "-7px" }}
                         >
                           <span className="font-bold text-md">
                             {match[1] || "Text"}
