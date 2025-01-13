@@ -166,7 +166,7 @@ export function ChatMessage({
                         wrapLongLines
                         showLineNumbers
                         showInlineLineNumbers
-                        className="max-w-[295px] max-h-[360px] md:max-h-none md:max-w-2xl rounded-md shadow-md"
+                        className="max-w-[295px] max-h-[360px] md:max-h-none md:max-w-2xl rounded-b-md"
                       >
                         {code}
                       </SyntaxHighlighter>
