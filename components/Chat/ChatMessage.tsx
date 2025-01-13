@@ -142,16 +142,22 @@ export function ChatMessage({
                   const code = String(children).replace(/\n$/, "");
                   return match ? (
                     <div className="relative max-w-[271px] md:max-w-none">
-                      <button
-                        className="top-1 right-1 rounded-md absolute bg-slate-900 rounded-b-md p-1"
-                        onClick={() => handleCopyToClipBoard(code)}
-                      >
-                        {copied ? (
-                          <Check color="#eee" size={18} />
-                        ) : (
-                          <Copy color="#eee" size={18} />
-                        )}
-                      </button>
+                      <div
+                          className="flex absolute w-full justify-between items-center p-2 bg-[#2f2f2f] text-[#bfaca8] text-xs rounded-t-md capitalize"
+                          style={{ marginTop: "-10px" }}
+                        >
+                          <span className="font-bold text-md">
+                            {match[1] || "Text"}
+                          </span>
+
+                          <button
+                            className="flex items-center gap-1 bg-[#4b4848] px-2 py-1 rounded hover:bg-gray-600 transition text-white"
+                            onClick={() => handleCopyToClipBoard(code)}
+                          >
+                            {copied ? <Check size={14} /> : <Copy size={14} />}
+                            <span>{copied ? "Copied" : "Copy"}</span>
+                          </button>
+                        </div>
 
                       <SyntaxHighlighter
                         PreTag="div"
