@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { GoogleTagManager } from "@next/third-parties/google";
 import ServiceWorkerRegistration from "./ServiceWorkerRegist";
+import { Roboto } from "next/font/google";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -48,6 +49,8 @@ export const metadata: Metadata = {
   },
 };
 
+const roboto = Roboto({ subsets: ["latin"], weight: ["400", "500", "700"] });
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -60,7 +63,7 @@ export default function RootLayout({
       dir="ltr"
     >
       <GoogleTagManager gtmId="GTM-N2BPXMRN" />
-      <body className="antialiased">
+      <body className={`antialiased ${roboto.className}`}>
         <ServiceWorkerRegistration />
         {children}
       </body>
