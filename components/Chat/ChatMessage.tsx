@@ -13,12 +13,9 @@ interface ChatMessageProps {
   content: string;
 }
 
-export function ChatMessage({
-  isUser,
-  content,
-}: ChatMessageProps) {
+export function ChatMessage({ isUser, content }: ChatMessageProps) {
   const autoScroll: MutableRefObject<HTMLDivElement | null> = useRef(null);
-  const [copied, setIsCopied] = useState<boolean>(false);
+  const [copied, setIsCopied] = useState<boolean>();
   const [isReading, setIsReading] = useState<boolean>(false);
   const [lang, setLang] = useState<string>("en");
   const [embedId, setEmbedId] = useState<string | null>(null);
@@ -37,13 +34,14 @@ export function ChatMessage({
         setIsCopied(true);
       })
       .catch((e) => {
+        setIsCopied(false);
         throw new Error(e);
       });
-  };
 
-  setTimeout(() => {
-    setIsCopied(false);
-  }, 4000);
+    setTimeout(() => {
+      setIsCopied(false);
+    }, 4000);
+  };
 
   interface LanguageMap {
     [key: string]: string;
@@ -141,11 +139,9 @@ export function ChatMessage({
                   const match = /language-(\w+)/.exec(className || "");
                   const code = String(children).replace(/\n$/, "");
                   return match ? (
-                    <div className="relative max-w-[271px] md:max-w-none">
-                      <div
-                          className="flex absolute w-full justify-between items-center p-2 bg-[#2f2f2f] text-[#bfaca8] text-xs rounded-t-md capitalize"
-                          style={{ marginTop: "-7px" }}
-                        >
+                    <>
+                      <div className="relative max-w-[271px] md:max-w-none">
+                        <div className="flex absolute w-full justify-between items-center p-1 bg-[#2f2f2f] text-[#bfaca8] text-xs rounded-t-md capitalize -top-5">
                           <span className="font-bold text-md">
                             {match[1] || "Text"}
                           </span>
@@ -159,18 +155,19 @@ export function ChatMessage({
                           </button>
                         </div>
 
-                      <SyntaxHighlighter
-                        PreTag="div"
-                        style={isDark ? atomDark : atomOneLight}
-                        language={match[1]}
-                        wrapLongLines
-                        showLineNumbers
-                        showInlineLineNumbers
-                        className="max-w-[295px] max-h-[360px] md:max-h-none md:max-w-2xl rounded-b-md"
-                      >
-                        {code}
-                      </SyntaxHighlighter>
-                    </div>
+                        <SyntaxHighlighter
+                          PreTag="div"
+                          style={isDark ? atomDark : atomOneLight}
+                          language={match[1]}
+                          wrapLongLines
+                          showLineNumbers
+                          showInlineLineNumbers
+                          className="max-w-[295px] max-h-[360px] md:max-h-none md:max-w-2xl rounded-b-md"
+                        >
+                          {code}
+                        </SyntaxHighlighter>
+                      </div>
+                    </>
                   ) : (
                     <code {...props} className={className}>
                       {children}
