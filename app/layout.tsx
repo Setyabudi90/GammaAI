@@ -44,7 +44,7 @@ export const metadata: Metadata = {
   applicationName: "Gamma AI",
   manifest: "/site.webmanifest",
   other: {
-    version: "1.1.0",
+    version: "1.4.10",
     releaseDate: "12-12-2024",
   },
 };
