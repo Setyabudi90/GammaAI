@@ -19,6 +19,7 @@ export function ChatMessage({ isUser, content }: ChatMessageProps) {
   const [isReading, setIsReading] = useState<boolean>(false);
   const [lang, setLang] = useState<string>("en");
   const [embedId, setEmbedId] = useState<string | null>(null);
+  const [embedWiki, setEmbedWiki] = useState<string | null>(null);
   const isDark = document.documentElement.classList.contains("dark");
 
   useEffect(() => {
@@ -69,13 +70,19 @@ export function ChatMessage({ isUser, content }: ChatMessageProps) {
     setLang(detectedISO639);
   };
 
-  const youtubeEmbed = (content: string) => {
+const youtubeEmbed = (content: string) => {
     const youtubeRegex =
       /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:watch\?v=|embed\/|v\/|shorts\/)|youtu\.be\/)([\w-]{11})/;
-    const match = content.match(youtubeRegex);
-    if (match) {
-      const videoId = match[1];
+    const wikipediaRegex = /https?:\/\/([a-z]{2})\.wikipedia\.org\/\S*/;
+    const matchYT = content.match(youtubeRegex);
+    const matchWiki = content.match(wikipediaRegex);
+    console.log(matchWiki);
+    if (matchYT) {
+      const videoId = matchYT[1];
       setEmbedId(videoId);
+    } else if (matchWiki) {
+      const takeWikiUrl = matchWiki[0];
+      setEmbedWiki(takeWikiUrl);
     }
   };
 
@@ -178,6 +185,16 @@ export function ChatMessage({ isUser, content }: ChatMessageProps) {
             >
               {content}
             </ReactMarkdown>
+
+            {embedWiki && !isUser && (
+              <iframe
+                className="w-full flex-shrink-0 rounded-sm shadow-md mb-3"
+                src={embedWiki}
+                height="384px"
+                title="Wikipedia Embed"
+                allowFullScreen
+              ></iframe>
+            )}
 
             {embedId && !isUser && (
               <iframe
