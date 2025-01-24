@@ -76,7 +76,6 @@ const youtubeEmbed = (content: string) => {
     const wikipediaRegex = /https?:\/\/([a-z]{2})\.wikipedia\.org\/\S*/;
     const matchYT = content.match(youtubeRegex);
     const matchWiki = content.match(wikipediaRegex);
-    console.log(matchWiki);
     if (matchYT) {
       const videoId = matchYT[1];
       setEmbedId(videoId);
