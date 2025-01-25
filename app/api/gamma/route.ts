@@ -85,7 +85,7 @@ export async function POST(req: NextRequest) {
 export async function DELETE() {
   resetHistory();
   return NextResponse.json(
-    { message: "History Percakapan di reset" },
+    { message: "Memori Percakapan berhasil dihapus" },
     { status: 200 }
   );
 }
