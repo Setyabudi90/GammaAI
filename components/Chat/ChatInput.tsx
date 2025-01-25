@@ -141,7 +141,7 @@ export function ChatInput({ onSendAction, isLoading = false }: ChatInputProps) {
                   onClick={isRecording ? stopSpeechToText : startSpeechToText}
                 >
                   {isRecording ? (
-                    <MicOff className="w-5 h-5 text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-600hover:text-gray-700 dark:hover:text-gray-200 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed" />
+                    <MicOff className="w-5 h-5 text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-600 hover:text-gray-700 dark:hover:text-gray-200 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed" />
                   ) : (
                     <Mic className="w-5 h-5 text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-600 hover:text-gray-700 dark:hover:text-gray-200 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed" />
                   )}
