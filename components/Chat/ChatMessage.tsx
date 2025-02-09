@@ -166,8 +166,6 @@ const youtubeEmbed = (content: string) => {
                           style={isDark ? atomDark : atomOneLight}
                           language={match[1]}
                           wrapLongLines
-                          showLineNumbers
-                          showInlineLineNumbers
                           className="max-w-[295px] max-h-[360px] md:max-h-none md:max-w-2xl rounded-b-md"
                         >
                           {code}
